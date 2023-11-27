@@ -1,12 +1,13 @@
 const enterButton = document.querySelector("#enter")
 const textInput = document.querySelector("#new-todo")
 const list = document.querySelector("#list")
+const dateButton = document.querySelector('#date')
+const dateText = document.querySelector("#date-content")
 
 let text = ""
 
 textInput.addEventListener( "input", (event)=>{
     text = event.target.value
-    console.log(text)
 })
 
 enterButton.addEventListener("click", (event)=>{
@@ -15,8 +16,22 @@ enterButton.addEventListener("click", (event)=>{
     newListItem.innerText = text
     let button = document.createElement("button")
     button.textContent = "delete"
-    list.appendChild(newListItem,button)
-
+    button.addEventListener("click", (event)=>
+{
+    console.log("delete")
+    button.parentNode.parentNode.removeChild(button.parentNode)
 })
+
+
+    newListItem.appendChild(button)
+    list.appendChild(newListItem)
+   
+})
+
+dateButton.addEventListener("click", () =>
+{
+    dateText.innerText = Date()
+})
+
 
 // console.log(list)
