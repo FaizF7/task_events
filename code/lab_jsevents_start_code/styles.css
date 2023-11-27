@@ -1,0 +1,11 @@
+.not-completed {
+    color: black;
+}
+
+li {
+    list-style: none;
+}
+
+.completed {
+    color: grey;
+}

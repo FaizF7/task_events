@@ -1,7 +1,8 @@
 // const enterButton = document.querySelector("#enter")
 const form = document.querySelector("#todo-form")
 const textInput = document.querySelector("#new-todo")
-const list = document.querySelector("#list")
+const todoList = document.querySelector("#todo-list")
+const doneList = document.querySelector("#done-list")
 const dateButton = document.querySelector('#date')
 const dateText = document.querySelector("#date-content")
 
@@ -28,7 +29,23 @@ form.addEventListener("submit", (event)=>{
         })
 
         newListItem.appendChild(button)
-        list.appendChild(newListItem)
+        todoList.appendChild(newListItem)
+
+        checkbox.addEventListener("click", ()=>{
+            console.log("checked")
+            if (checkbox.checked){
+                checkbox.parentElement.classList.remove("not-completed")
+                checkbox.parentElement.classList.add("completed")
+                todoList.removeChild(checkbox.parentNode)
+                doneList.appendChild(checkbox.parentNode)
+            }
+            else{
+                checkbox.parentElement.classList.add("not-completed")
+                checkbox.parentElement.classList.remove("completed")
+                doneList.removeChild(checkbox.parentNode)
+                todoList.appendChild(checkbox.parentNode)
+            }
+        })
     }
 })
 
